@@ -7,9 +7,10 @@
 #'
 #' @returns An sf object with POINT geometry containing the locations of the sampled occurrences and a `coordinateUncertaintyInMeters` column containing the coordinate uncertainty for each observation.
 #'
-#' @import dplyr
-#' @import cli
-#' @import sf
+#' @importFrom dplyr mutate select
+#' @importFrom cli cli_abort cli_warn
+#' @importFrom sf st_coordinates st_drop_geometry st_as_sf
+#' @importFrom magrittr %>%
 #'
 #' @examples
 #'

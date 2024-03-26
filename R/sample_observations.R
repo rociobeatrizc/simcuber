@@ -14,9 +14,6 @@
 #' @returns An sf object with POINT geometry containing the locations of the sampled observations, a `detection_probability` column containing the detection probability for each observation (will be the same for all), a `bias_weight` column containing the sampling probability based on sampling bias, a `sampling_probability` column containing the combined sampling probability from detection probability and sampling bias, and a `coordinateUncertaintyInMeters` column containing the coordinate uncertainty for each observation.
 #'
 #' @export
-#' @import dplyr
-#' @import cli
-#' @import sf
 #'
 #' @examples
 #'

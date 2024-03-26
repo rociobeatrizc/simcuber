@@ -8,15 +8,16 @@
 #'
 #' @returns An sf object with POINT geometry containing the locations of the sampled occurrences and a `coordinateUncertaintyInMeters` column containing the coordinate uncertainty for each observation.
 #'
-#' @import dplyr
-#' @import cli
-#' @import sf
-#'
+#' @importFrom dplyr select
+#' @importFrom cli cli_abort cli_warn
+#' @importFrom sf st_coordinates st_as_sf st_crs
+#' @importFrom magrittr %>%
 #' @importFrom mnormt rmnorm
 #'
 #' @examples
 #'
 #' library(sf)
+#' library(dplyr)
 #'
 #' set.seed(123)
 #'
@@ -110,7 +111,7 @@ sample_from_binormal_circle <- function(
 
     # New points are equal to original points in case of no uncertainty
     new_points <- observations %>%
-      select(coordinateUncertaintyInMeters)
+      dplyr::select(coordinateUncertaintyInMeters)
   } else {
     # Calculate 2-dimensional means and variance-covariance matrices
     means <- sf::st_coordinates(observations$geometry)

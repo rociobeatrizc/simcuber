@@ -14,13 +14,15 @@
 #'
 #' @export
 #'
-#' @import dplyr
-#' @import cli
-#' @import sf
+#' @importFrom dplyr group_by_at summarise n ungroup full_join join_by select_at mutate
+#' @importFrom cli cli_abort cli_warn
+#' @importFrom sf st_drop_geometry st_crs st_agr st_intersection st_as_sf
+#' @importFrom magrittr %>%
 #'
 #' @examples
 #'
 #' library(sf)
+#' library(dplyr)
 #'
 #' set.seed(123)
 #'
@@ -151,10 +153,8 @@ grid_designation <- function(
 
   # Get random point in uncertainty circle according to uniform or normal rules
   if (randomisation == "uniform") {
-    source(here("R", "sample_from_uniform_circle.R"))
     new_points <- sample_from_uniform_circle(observations, seed)
   } else {
-    source(here("R", "sample_from_binormal_circle.R"))
     new_points <- sample_from_binormal_circle(observations, p_norm, seed)
   }
 

@@ -14,10 +14,6 @@
 #'
 #' @export
 #'
-#' @import dplyr
-#' @import cli
-#' @import sf
-#'
 #' @examples
 #'
 #' # add example here
