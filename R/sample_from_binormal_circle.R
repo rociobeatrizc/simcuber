@@ -32,15 +32,15 @@
 #'   lat = runif(n_points, ylim[1], ylim[2]),
 #'   long = runif(n_points, xlim[1], xlim[2]),
 #'   coordinateUncertaintyInMeters = coordinate_uncertainty
-#'   ) %>%
+#' ) %>%
 #'   st_as_sf(coords = c("long", "lat"), crs = 3035)
 #'
 #' # Sample points within uncertainty circles according to normal rules
 #' sample_from_binormal_circle(
 #'   observations = observations_sf,
 #'   p_norm = 0.95,
-#'   seed = 123)
-
+#'   seed = 123
+#' )
 sample_from_binormal_circle <- function(
     observations,
     p_norm = 0.95,
@@ -50,24 +50,28 @@ sample_from_binormal_circle <- function(
   if (length(seed) != 1) {
     cli::cli_abort(c(
       "{.var seed} must be a numeric vector of length 1.",
-      "x" = paste("You've supplied a {.cls {class(seed)}} vector",
-                  "of length {length(seed)}."))
-    )
+      "x" = paste(
+        "You've supplied a {.cls {class(seed)}} vector",
+        "of length {length(seed)}."
+      )
+    ))
   }
   if (length(p_norm) != 1) {
     cli::cli_abort(c(
       "{.var p_norm} must be a vector of length 1.",
-      "x" = paste("You've supplied a vector",
-                  "of length {length(p_norm)}."))
-    )
+      "x" = paste(
+        "You've supplied a vector",
+        "of length {length(p_norm)}."
+      )
+    ))
   }
 
   # 2. check input classes
   if (!"sf" %in% class(observations)) {
     cli::cli_abort(c(
       "{.var observations} must be an sf object",
-      "x" = "You've supplied a {.cls {class(observations)}} object.")
-    )
+      "x" = "You've supplied a {.cls {class(observations)}} object."
+    ))
   }
 
   # 3. other checks
@@ -75,16 +79,18 @@ sample_from_binormal_circle <- function(
   if (!is.numeric(p_norm)) {
     cli::cli_abort(c(
       "{.var p_norm} must be a numeric vector of length 1.",
-      "x" = paste("You've supplied a {.cls {class(aggregate)}} vector",
-                  "of length {length(aggregate)}."))
-    )
+      "x" = paste(
+        "You've supplied a {.cls {class(aggregate)}} vector",
+        "of length {length(aggregate)}."
+      )
+    ))
   }
   if (p_norm <= 0 || p_norm >= 1) {
     if (is.numeric(p_norm)) {
       cli::cli_abort(c(
         "{.var p_norm} must be a single value between 0 and 1.",
-        "x" = "You've supplied the value(s) {p_norm}.")
-      )
+        "x" = "You've supplied the value(s) {p_norm}."
+      ))
     }
   }
   ### End checks
@@ -96,9 +102,11 @@ sample_from_binormal_circle <- function(
     } else {
       cli::cli_abort(c(
         "{.var seed} must be a numeric vector of length 1.",
-        "x" = paste("You've supplied a {.cls {class(seed)}} vector",
-                    "of length {length(seed)}."))
-      )
+        "x" = paste(
+          "You've supplied a {.cls {class(seed)}} vector",
+          "of length {length(seed)}."
+        )
+      ))
     }
   }
 
@@ -106,8 +114,10 @@ sample_from_binormal_circle <- function(
   if (!"coordinateUncertaintyInMeters" %in% names(observations)) {
     observations$coordinateUncertaintyInMeters <- 0
     cli::cli_warn(
-      paste("No column {.var coordinateUncertaintyInMeters} present!",
-            "Assuming no uncertainty around observations.")
+      paste(
+        "No column {.var coordinateUncertaintyInMeters} present!",
+        "Assuming no uncertainty around observations."
+      )
     )
 
     # New points are equal to original points in case of no uncertainty
@@ -126,7 +136,8 @@ sample_from_binormal_circle <- function(
     new_points_list <- vector("list", length = nrow(observations))
     for (i in seq_len(nrow(observations))) {
       new_points_list[[i]] <- mnormt::rmnorm(
-        1, mean = means[i, ], varcov = varcovariances[[i]]
+        1,
+        mean = means[i, ], varcov = varcovariances[[i]]
       )
     }
     new_points_df <- do.call(rbind.data.frame, new_points_list)
@@ -136,7 +147,7 @@ sample_from_binormal_circle <- function(
     new_points <- cbind(
       new_points_df,
       coordinateUncertaintyInMeters = observations$coordinateUncertaintyInMeters
-      ) %>%
+    ) %>%
       sf::st_as_sf(coords = c("x_new", "y_new"), crs = sf::st_crs(observations))
   }
 

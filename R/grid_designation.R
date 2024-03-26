@@ -37,7 +37,7 @@
 #'   lat = runif(n_points, ylim[1], ylim[2]),
 #'   long = runif(n_points, xlim[1], xlim[2]),
 #'   coordinateUncertaintyInMeters = coordinate_uncertainty
-#'   ) %>%
+#' ) %>%
 #'   st_as_sf(coords = c("long", "lat"), crs = 3035)
 #'
 #' # Add buffer uncertainty in meters around points
@@ -49,15 +49,15 @@
 #'   observations_buffered,
 #'   square = TRUE,
 #'   cellsize = c(200, 200)
-#'   ) %>%
+#' ) %>%
 #'   st_sf()
 #'
 #' # Create occurrence cube
 #' grid_designation(
 #'   observations = observations_sf,
 #'   grid = grid_df,
-#'   seed = 123)
-
+#'   seed = 123
+#' )
 grid_designation <- function(
     observations,
     grid,
@@ -65,8 +65,7 @@ grid_designation <- function(
     seed = NA,
     aggregate = TRUE,
     randomisation = c("uniform", "normal"),
-    p_norm = ifelse(tolower(randomisation[1]) ==  "uniform", NA, 0.95)) {
-
+    p_norm = ifelse(tolower(randomisation[1]) == "uniform", NA, 0.95)) {
   # Default randomisation is first element in vector
   randomisation <- randomisation[1]
 
@@ -75,50 +74,58 @@ grid_designation <- function(
   if (length(id_col) != 1) {
     cli::cli_abort(c(
       "{.var id_col} must be a character vector of length 1.",
-      "x" = paste("You've supplied a {.cls {class(id_col)}} vector",
-                  "of length {length(id_col)}."))
-    )
+      "x" = paste(
+        "You've supplied a {.cls {class(id_col)}} vector",
+        "of length {length(id_col)}."
+      )
+    ))
   }
   if (length(aggregate) != 1) {
     cli::cli_abort(c(
       "{.var aggregate} must be a logical vector of length 1.",
-      "x" = paste("You've supplied a {.cls {class(aggregate)}} vector",
-                  "of length {length(aggregate)}."))
-    )
+      "x" = paste(
+        "You've supplied a {.cls {class(aggregate)}} vector",
+        "of length {length(aggregate)}."
+      )
+    ))
   }
 
   # 2. check input classes
   if (!"sf" %in% class(observations)) {
     cli::cli_abort(c(
       "{.var observations} must be an sf object",
-      "x" = "You've supplied a {.cls {class(observations)}} object.")
-    )
+      "x" = "You've supplied a {.cls {class(observations)}} object."
+    ))
   }
   if (!"sf" %in% class(grid)) {
     cli::cli_abort(c(
       "{.var grid} must be an sf object.",
-      "x" = "You've supplied a {.cls {class(grid)}} object.")
-    )
+      "x" = "You've supplied a {.cls {class(grid)}} object."
+    ))
   }
   if (!is.character(id_col)) {
     cli::cli_abort(c(
       "{.var id_col} must be a character vector of length 1.",
-      "x" = paste("You've supplied a {.cls {class(id_col)}} vector",
-                  "of length {length(id_col)}."))
-    )
+      "x" = paste(
+        "You've supplied a {.cls {class(id_col)}} vector",
+        "of length {length(id_col)}."
+      )
+    ))
   }
   if (!is.logical(aggregate)) {
     cli::cli_abort(c(
       "{.var aggregate} must be a logical vector of length 1.",
-      "x" = paste("You've supplied a {.cls {class(aggregate)}} vector",
-                  "of length {length(aggregate)}."))
-    )
+      "x" = paste(
+        "You've supplied a {.cls {class(aggregate)}} vector",
+        "of length {length(aggregate)}."
+      )
+    ))
   }
   if (!is.character(randomisation)) {
     cli::cli_abort(c(
       "{.var randomisation} must be a character vector.",
-      "x" = "You've supplied a {.cls {class(randomisation)}} vector")
-    )
+      "x" = "You've supplied a {.cls {class(randomisation)}} vector"
+    ))
   }
 
   # 3. other checks
@@ -130,15 +137,19 @@ grid_designation <- function(
   if (id_col != "row_names") {
     if (!id_col %in% names(grid)) {
       cli::cli_warn(
-        paste('Column name "{id_col}" not present in provided grid!',
-              "Creating ids based on row names")
+        paste(
+          'Column name "{id_col}" not present in provided grid!',
+          "Creating ids based on row names"
         )
+      )
       id_col <- "row_names"
     } else if (length(unique(grid[[id_col]])) != nrow(grid)) {
       cli::cli_warn(
-        paste("Column `{id_col}` does not contain unique ids for grid",
-              "cells! Creating new ids based on row names")
+        paste(
+          "Column `{id_col}` does not contain unique ids for grid",
+          "cells! Creating new ids based on row names"
         )
+      )
       id_col <- "row_names"
     }
   }
@@ -146,9 +157,9 @@ grid_designation <- function(
   randomisation <- tolower(randomisation)
   if (!randomisation %in% c("uniform", "normal")) {
     cli::cli_abort(c(
-        '{.var randomisation} should be one of "uniform", "normal".',
-        "x" = "You've supplied {.val {randomisation[1]}}.")
-      )
+      '{.var randomisation} should be one of "uniform", "normal".',
+      "x" = "You've supplied {.val {randomisation[1]}}."
+    ))
   }
   ### End checks
 
@@ -177,7 +188,8 @@ grid_designation <- function(
       dplyr::group_by_at(id_col) %>%
       dplyr::summarise(
         n = dplyr::n(),
-        min_coord_uncertainty = min(.data$coordinateUncertaintyInMeters)) %>%
+        min_coord_uncertainty = min(.data$coordinateUncertaintyInMeters)
+      ) %>%
       dplyr::ungroup()
 
     # Add zeroes

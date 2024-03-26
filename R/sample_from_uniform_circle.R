@@ -29,14 +29,14 @@
 #'   lat = runif(n_points, ylim[1], ylim[2]),
 #'   long = runif(n_points, xlim[1], xlim[2]),
 #'   coordinateUncertaintyInMeters = coordinate_uncertainty
-#'   ) %>%
+#' ) %>%
 #'   st_as_sf(coords = c("long", "lat"), crs = 3035)
 #'
 #' # Sample points within uncertainty circles according to uniform rules
 #' sample_from_uniform_circle(
 #'   observations = observations_sf,
-#'   seed = 123)
-
+#'   seed = 123
+#' )
 sample_from_uniform_circle <- function(
     observations,
     seed = NA) {
@@ -45,17 +45,19 @@ sample_from_uniform_circle <- function(
   if (length(seed) != 1) {
     cli::cli_abort(c(
       "{.var seed} must be a numeric vector of length 1.",
-      "x" = paste("You've supplied a {.cls {class(seed)}} vector",
-                  "of length {length(seed)}."))
-    )
+      "x" = paste(
+        "You've supplied a {.cls {class(seed)}} vector",
+        "of length {length(seed)}."
+      )
+    ))
   }
 
   # 2. check input classes
   if (!"sf" %in% class(observations)) {
     cli::cli_abort(c(
       "{.var observations} must be an sf object",
-      "x" = "You've supplied a {.cls {class(observations)}} object.")
-    )
+      "x" = "You've supplied a {.cls {class(observations)}} object."
+    ))
   }
   ### End checks
 
@@ -66,9 +68,11 @@ sample_from_uniform_circle <- function(
     } else {
       cli::cli_abort(c(
         "{.var seed} must be a numeric vector of length 1.",
-        "x" = paste("You've supplied a {.cls {class(seed)}} vector",
-                    "of length {length(seed)}."))
-      )
+        "x" = paste(
+          "You've supplied a {.cls {class(seed)}} vector",
+          "of length {length(seed)}."
+        )
+      ))
     }
   }
 
@@ -76,8 +80,10 @@ sample_from_uniform_circle <- function(
   if (!"coordinateUncertaintyInMeters" %in% names(observations)) {
     observations$coordinateUncertaintyInMeters <- 0
     cli::cli_warn(
-      paste("No column {.var coordinateUncertaintyInMeters} present!",
-            "Assuming no uncertainty around observations.")
+      paste(
+        "No column {.var coordinateUncertaintyInMeters} present!",
+        "Assuming no uncertainty around observations."
+      )
     )
   }
 
@@ -87,7 +93,8 @@ sample_from_uniform_circle <- function(
     dplyr::mutate(
       random_angle = runif(nrow(observations), 0, 2 * pi),
       random_r = sqrt(runif(nrow(observations), 0, 1)) *
-        .data$coordinateUncertaintyInMeters)
+        .data$coordinateUncertaintyInMeters
+    )
 
   # Calculate new point
   new_points <-
@@ -96,10 +103,13 @@ sample_from_uniform_circle <- function(
       x_new = sf::st_coordinates(.data$geometry)[, 1] +
         .data$random_r * cos(.data$random_angle),
       y_new = sf::st_coordinates(.data$geometry)[, 2] +
-        .data$random_r * sin(.data$random_angle)) %>%
+        .data$random_r * sin(.data$random_angle)
+    ) %>%
     sf::st_drop_geometry() %>%
-    sf::st_as_sf(coords = c("x_new", "y_new"),
-                 crs = sf::st_crs(observations)) %>%
+    sf::st_as_sf(
+      coords = c("x_new", "y_new"),
+      crs = sf::st_crs(observations)
+    ) %>%
     dplyr::select(.data$coordinateUncertaintyInMeters)
 
   return(new_points)
