@@ -3,25 +3,19 @@ Title: Simulating Biodiversity Data Cubes
 Version: 0.0.0
 Authors@R: c(
     person("Ward", "Langeraert", , "ward.langeraert@inbo.be", role = c("aut", "cre"),
-           comment = c(orcid = "0000-0002-5900-8109", affiliation = "Instituut voor Natuur- en Bosonderzoek (INBO)")),
-    person("Research Institute for Nature and Forest (INBO)", , , "info@inbo.be", role = c("cph", "fnd"))
+           comment = c(ORCID = "0000-0002-5900-8109", affiliation = "Instituut voor Natuur- en Bosonderzoek (INBO)"))
   )
-Description: simcuber provide a simulation framework for
-    biodiversity data cubes using the R programming language. This can
-    start from simulating multiple species distributed in a landscape over
-    a temporal scope. In a second phase, the simulation of a variety of
-    observation processes and effort can generate actual occurrence
-    datasets. Based on their (simulated) spatial uncertainty, occurrences
-    can then be designated to a grid to form a data cube. Simulation
-    studies offer numerous benefits due to their ability to mimic
-    real-world scenarios in controlled and customizable environments. The
-    simulation framework can be used to assess multiple research questions
-    under different parameter settings, such as the effect of clustering
-    on occurrence-to-grid designation and the effect of different patterns
-    of missingness on data quality and indicator robustness.
+Description: Simulation framework for biodiversity data cubes.
 License: MIT + file LICENSE
 URL: https://github.com/b-cubed-eu/simcuber
 BugReports: https://github.com/b-cubed-eu/simcuber/issues
+Imports:
+    cli,
+    dplyr,
+    rlang,
+    magrittr,
+    mnormt,
+    sf
 Config/checklist/keywords: simulation; data cubes; B-Cubed; biodiversity;
     Monte-Carlo
 Encoding: UTF-8
