@@ -12,10 +12,11 @@ BugReports: https://github.com/b-cubed-eu/simcuber/issues
 Imports:
     cli,
     dplyr,
-    rlang,
     magrittr,
     mnormt,
-    sf
+    rlang,
+    sf,
+    stats
 Config/checklist/keywords: simulation; data cubes; B-Cubed; biodiversity;
     Monte-Carlo
 Encoding: UTF-8
