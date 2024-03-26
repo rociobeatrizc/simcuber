@@ -19,9 +19,11 @@
 #' @importFrom cli cli_abort cli_warn
 #' @importFrom sf st_coordinates st_drop_geometry st_as_sf
 #' @importFrom magrittr %>%
+#' @importFrom stats runif
 #'
 #' @examples
 #'
+#' library(simcuber)
 #' library(sf)
 #'
 #' set.seed(123)

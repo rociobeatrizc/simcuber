@@ -52,6 +52,7 @@
 #'
 #' @examples
 #'
+#' library(simcuber)
 #' library(sf)
 #' library(dplyr)
 #'
