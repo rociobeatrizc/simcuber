@@ -2,7 +2,8 @@
 #'
 #' The function samples occurrences of a species within the uncertainty circle
 #' around each observation assuming a bivariate Normal distribution with means
-#' equal to the observation point and the variance equal to (-`coordinateUncertaintyInMeters`^2) / (2 * log(1 - `p_norm`)) such that
+#' equal to the observation point and the variance equal to
+#' (-`coordinateUncertaintyInMeters`^2) / (2 * log(1 - `p_norm`)) such that
 #' `p_norm` % of all possible samples from this Normal distribution fall within
 #' the uncertainty circle.
 #'

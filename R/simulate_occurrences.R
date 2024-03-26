@@ -10,7 +10,8 @@
 #' at time point 1. This value will be used as mean of a Poisson distribution
 #' (lambda parameter).
 #' @param spatial_autocorr `"random"`, `"clustered"`, `"regular"` or a numeric
-#' value between -1 and 1 representing Moran's I. `"random"` corresponds to 0, `"clustered"` to 0.9 and `"regular"` to -0.9.
+#' value between -1 and 1 representing Moran's I. `"random"` corresponds to 0,
+#' `"clustered"` to 0.9 and `"regular"` to -0.9.
 #' @param n_time_points A positive integer value indicating the number of time
 #' points to simulate.
 #' @param temporal_autocorr `NA`, `"random_walk"` or a function which generates

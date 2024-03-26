@@ -3,7 +3,8 @@
 #' The function samples occurrences of a species within the uncertainty circle
 #' around each observation assuming a Uniform distribution.
 #'
-#' @param observations An sf object with POINT geometry and a `coordinateUncertaintyInMeters` column. If this column is not present, the
+#' @param observations An sf object with POINT geometry and a
+#' `coordinateUncertaintyInMeters` column. If this column is not present, the
 #' function will assume no (zero meters) uncertainty around the observation
 #' points.
 #' @param seed A positive numeric value. The seed for random number generation

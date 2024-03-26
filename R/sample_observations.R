@@ -36,7 +36,8 @@
 #' detection probability for each observation (will be the same for all), a
 #' `bias_weight` column containing the sampling probability based on sampling
 #' bias, a `sampling_probability` column containing the combined sampling
-#' probability from detection probability and sampling bias, and a `coordinateUncertaintyInMeters` column containing the coordinate uncertainty
+#' probability from detection probability and sampling bias, and a
+#' `coordinateUncertaintyInMeters` column containing the coordinate uncertainty
 #' for each observation.
 #'
 #' @export
