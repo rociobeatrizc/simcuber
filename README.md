@@ -10,9 +10,6 @@ proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![Release](https://img.shields.io/github/release/b-cubed-eu/simcuber.svg)](https://github.com/b-cubed-eu/simcuber/releases)
-![GitHub](https://img.shields.io/github/license/b-cubed-eu/simcuber)
-[![R build
-status](https://github.com/b-cubed-eu/simcuber/workflows/check%20package%20on%20main/badge.svg)](https://github.com/b-cubed-eu/simcuber/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/b-cubed-eu/simcuber/branch/main/graph/badge.svg)](https://app.codecov.io/gh/b-cubed-eu/simcuber?branch=main)
 ![GitHub code size in
