@@ -14,6 +14,8 @@
 #' sampled occurrences and a `coordinateUncertaintyInMeters` column containing
 #' the coordinate uncertainty for each observation.
 #'
+#' @export
+#'
 #' @importFrom dplyr mutate select
 #' @importFrom rlang .data
 #' @importFrom cli cli_abort cli_warn

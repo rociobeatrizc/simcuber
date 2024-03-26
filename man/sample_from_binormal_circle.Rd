@@ -34,6 +34,7 @@ the uncertainty circle.
 }
 \examples{
 
+library(simcuber)
 library(sf)
 library(dplyr)
 
