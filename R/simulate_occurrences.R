@@ -14,6 +14,10 @@
 #'
 #' @export
 #'
+#' @import dplyr
+#' @import cli
+#' @import sf
+#'
 #' @examples
 #'
 #' # add example here
@@ -26,14 +30,6 @@ simulate_occurrences <- function(
     temporal_autocorr = ifelse(time_points ==  1, NA, "random_walk"),
     spatiotemporal_autocorr = NA,
     seed = NA) {
-  # Load packages or install them if not available
-  # (not good practise for package!)
-  if (!requireNamespace("cli", quietly = TRUE)) install.packages("cli")
-  if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
-  if (!requireNamespace("sf", quietly = TRUE)) install.packages("sf")
-  require(cli)
-  require(dplyr)
-  require(sf)
 
   # ...
 }

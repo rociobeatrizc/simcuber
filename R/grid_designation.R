@@ -14,6 +14,10 @@
 #'
 #' @export
 #'
+#' @import dplyr
+#' @import cli
+#' @import sf
+#'
 #' @examples
 #'
 #' library(sf)
@@ -59,14 +63,6 @@ grid_designation <- function(
     aggregate = TRUE,
     randomisation = c("uniform", "normal"),
     p_norm = ifelse(tolower(randomisation[1]) ==  "uniform", NA, 0.95)) {
-  # Load packages or install them if not available
-  # (not good practise for package!)
-  if (!requireNamespace("cli", quietly = TRUE)) install.packages("cli")
-  if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
-  if (!requireNamespace("sf", quietly = TRUE)) install.packages("sf")
-  require(cli)
-  require(dplyr)
-  require(sf)
 
   # Default randomisation is first element in vector
   randomisation <- randomisation[1]
