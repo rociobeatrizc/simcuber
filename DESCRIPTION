@@ -6,7 +6,7 @@ Authors@R: c(
            comment = c(orcid = "0000-0002-5900-8109", affiliation = "Instituut voor Natuur- en Bosonderzoek (INBO)")),
     person("Research Institute for Nature and Forest (INBO)", , , "info@inbo.be", role = c("cph", "fnd"))
   )
-Description: This package aims to provide a simulation framework for
+Description: simcuber provide a simulation framework for
     biodiversity data cubes using the R programming language. This can
     start from simulating multiple species distributed in a landscape over
     a temporal scope. In a second phase, the simulation of a variety of
