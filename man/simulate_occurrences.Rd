@@ -24,7 +24,8 @@ at time point 1. This value will be used as mean of a Poisson distribution
 (lambda parameter).}
 
 \item{spatial_autocorr}{\code{"random"}, \code{"clustered"}, \code{"regular"} or a numeric
-value between -1 and 1 representing Moran's I. \code{"random"} corresponds to 0, \code{"clustered"} to 0.9 and \code{"regular"} to -0.9.}
+value between -1 and 1 representing Moran's I. \code{"random"} corresponds to 0,
+\code{"clustered"} to 0.9 and \code{"regular"} to -0.9.}
 
 \item{n_time_points}{A positive integer value indicating the number of time
 points to simulate.}

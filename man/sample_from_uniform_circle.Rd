@@ -7,7 +7,8 @@
 sample_from_uniform_circle(observations, seed = NA)
 }
 \arguments{
-\item{observations}{An sf object with POINT geometry and a \code{coordinateUncertaintyInMeters} column. If this column is not present, the
+\item{observations}{An sf object with POINT geometry and a
+\code{coordinateUncertaintyInMeters} column. If this column is not present, the
 function will assume no (zero meters) uncertainty around the observation
 points.}
 

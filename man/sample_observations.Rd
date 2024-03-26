@@ -57,7 +57,8 @@ sampled observations, a \code{detection_probability} column containing the
 detection probability for each observation (will be the same for all), a
 \code{bias_weight} column containing the sampling probability based on sampling
 bias, a \code{sampling_probability} column containing the combined sampling
-probability from detection probability and sampling bias, and a \code{coordinateUncertaintyInMeters} column containing the coordinate uncertainty
+probability from detection probability and sampling bias, and a
+\code{coordinateUncertaintyInMeters} column containing the coordinate uncertainty
 for each observation.
 }
 \description{
