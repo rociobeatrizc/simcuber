@@ -12,6 +12,8 @@
 #'
 #' @returns An sf object with POINT geometry containing the locations of the simulated occurrences and a `time_point` column containing the time point associated with each occurrence.
 #'
+#' @export
+#'
 #' @examples
 #'
 #' # add example here

@@ -12,6 +12,8 @@
 #'
 #' @returns In case of `aggregate = TRUE`, an sf object with POLYGON geometry containing the locations of the grid cells, an `n` column with the number of observations per grid cell, and a `min_coord_uncertainty` column containing the minimal coordinate uncertainty per grid cell. In case of `aggregate = FALSE`, an sf object with POINT geometry containing the locations of the sampled observations within the uncertainty circle, and a `coordinateUncertaintyInMeters` column containing the coordinate uncertainty for each observation.
 #'
+#' @export
+#'
 #' @examples
 #'
 #' library(sf)
