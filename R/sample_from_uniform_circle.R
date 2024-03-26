@@ -8,6 +8,7 @@
 #' @returns An sf object with POINT geometry containing the locations of the sampled occurrences and a `coordinateUncertaintyInMeters` column containing the coordinate uncertainty for each observation.
 #'
 #' @importFrom dplyr mutate select
+#' @importFrom rlang .data
 #' @importFrom cli cli_abort cli_warn
 #' @importFrom sf st_coordinates st_drop_geometry st_as_sf
 #' @importFrom magrittr %>%
@@ -86,20 +87,20 @@ sample_from_uniform_circle <- function(
     dplyr::mutate(
       random_angle = runif(nrow(observations), 0, 2 * pi),
       random_r = sqrt(runif(nrow(observations), 0, 1)) *
-        coordinateUncertaintyInMeters)
+        .data$coordinateUncertaintyInMeters)
 
   # Calculate new point
   new_points <-
     uncertainty_points %>%
     dplyr::mutate(
-      x_new = sf::st_coordinates(geometry)[, 1] +
-        random_r * cos(random_angle),
-      y_new = sf::st_coordinates(geometry)[, 2] +
-        random_r * sin(random_angle)) %>%
+      x_new = sf::st_coordinates(.data$geometry)[, 1] +
+        .data$random_r * cos(.data$random_angle),
+      y_new = sf::st_coordinates(.data$geometry)[, 2] +
+        .data$random_r * sin(.data$random_angle)) %>%
     sf::st_drop_geometry() %>%
     sf::st_as_sf(coords = c("x_new", "y_new"),
                  crs = sf::st_crs(observations)) %>%
-    dplyr::select(coordinateUncertaintyInMeters)
+    dplyr::select(.data$coordinateUncertaintyInMeters)
 
   return(new_points)
 }
