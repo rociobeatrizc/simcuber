@@ -7,7 +7,6 @@
 ^\.httr-oauth$
 ^\.zenodo\.json$
 ^_pkgdown.yml$
-^checklist.yml$
 ^codecov\.yml$
 ^data-raw$
 ^docs$
