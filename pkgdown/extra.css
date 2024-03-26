@@ -6,14 +6,14 @@ body {
 }
 
 .row{
-  background-color: #6CDDB4fff;
+  background-color: #ffffff;
 }
 
 a {
-  color: #005957;
+  color: #c04384;
 }
 a:hover {
-  color: #EFF8F5;
+  color: #337ab7;
 }
 
 .navbar,
@@ -24,7 +24,7 @@ a:hover {
 
 .navbar-default .navbar-link,
 .navbar-default .navbar-nav>li>a {
-  color: #6CDDB4fff;
+  color: #ffffff;
 }
 
 .nav-pills li.active>a, .nav-pills li>a:hover {
@@ -32,7 +32,7 @@ a:hover {
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus {
-  color: #6CDDB4fff;
+  color: #ffffff;
   background-color: #356196;
 }
 
@@ -51,8 +51,8 @@ a:hover {
 }
 
 code.sourceCode.diff span.st {
-  background-color: #005957;
-  color: #6CDDB4FFF;
+  background-color: #C04384;
+  color: #FFFFFF;
   font-weight: bold;
 }
 
@@ -63,30 +63,30 @@ code.sourceCode.diff span.va {
 
 /*selection color*/
 ::selection {
-  background: #005957;
-  color: #6CDDB4;
+  background: #c04384;
+  color: #fff;
 }
 ::-moz-selection {
-  background: #005957;
-  color: #6CDDB4;
+  background: #c04384;
+  color: #fff;
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
-  color: #EFF8F5;
-  background: #6CDDB4;
+  color: #337ab7;
+  background: #fff;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-  color: #EFF8F5;
-  background: #6CDDB4;
+  color: #337ab7;
+  background: #fff;
 }
 
 .navbar-default .navbar-nav>li>a:hover{
-  color: #EFF8F5;
-  background: #6CDDB4;
+  color: #337ab7;
+  background: #fff;
 }
 
 .dropdown-menu>li>a:hover{
-  color: #6CDDB4;
-  background: #EFF8F5;
+  color: #fff;
+  background: #337ab7;
 }
