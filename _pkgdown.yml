@@ -10,11 +10,9 @@ navbar:
     href: CONTRIBUTING.html
   right:
   - icon: "fa fa-github"
-    href: https://github.com/inbo/simcuber
+    href: https://github.com/b-cubed-eu/simcuber
   - icon: "fa fa-twitter"
-    href: https://twitter.com/INBOVlaanderen
-  - icon: "fa fa-facebook"
-    href: https://www.facebook.com/pg/INBOVlaanderen
+    href: https://twitter.com/BCubedProject
 
 authors:
   Research Institute for Nature and Forest (INBO):
