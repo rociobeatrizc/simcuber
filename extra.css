@@ -19,7 +19,7 @@ a:hover {
 .navbar,
 .label-default,
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-  background-color: #356196;
+  background-color: #005957;
 }
 
 .navbar-default .navbar-link,
@@ -33,7 +33,7 @@ a:hover {
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus {
   color: #ffffff;
-  background-color: #356196;
+  background-color: #005957;
 }
 
 .nav-pills a {
