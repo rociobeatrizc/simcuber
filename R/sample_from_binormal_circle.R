@@ -1,12 +1,24 @@
 #' Sample from a circle using the bivariate Normal distribution
 #'
-#' The function samples occurrences of a species within the uncertainty circle around each observation assuming a bivariate Normal distribution with means equal to the observation point and the variance equal to (-`coordinateUncertaintyInMeters`^2) / (2 * log(1 - `p_norm`)) such that `p_norm` % of all possible samples from this Normal distribution fall within the uncertainty circle.
+#' The function samples occurrences of a species within the uncertainty circle
+#' around each observation assuming a bivariate Normal distribution with means
+#' equal to the observation point and the variance equal to (-`coordinateUncertaintyInMeters`^2) / (2 * log(1 - `p_norm`)) such that
+#' `p_norm` % of all possible samples from this Normal distribution fall within
+#' the uncertainty circle.
 #'
-#' @param observations An sf object with POINT geometry and a `coordinateUncertaintyInMeters` column. If this column is not present, the function will assume no (zero meters) uncertainty around the observation points.
-#' @param p_norm A numeric value between 0 and 1. The proportion of all possible samples from a a bivariate Normal distribution that fall within the uncertainty circle. If no value is given, the default `p_norm` value is 0.95.
-#' @param seed A positive numeric value. The seed for random number generation to make results reproducible. If `NA` (the default), no seed is used.
+#' @param observations An sf object with POINT geometry and a
+#' `coordinateUncertaintyInMeters` column. If this column is not present, the
+#' function will assume no (zero meters) uncertainty around the observation
+#' points.
+#' @param p_norm A numeric value between 0 and 1. The proportion of all
+#' possible samples from a a bivariate Normal distribution that fall within the
+#' uncertainty circle. If no value is given, the default `p_norm` value is 0.95.
+#' @param seed A positive numeric value. The seed for random number generation
+#' to make results reproducible. If `NA` (the default), no seed is used.
 #'
-#' @returns An sf object with POINT geometry containing the locations of the sampled occurrences and a `coordinateUncertaintyInMeters` column containing the coordinate uncertainty for each observation.
+#' @returns An sf object with POINT geometry containing the locations of the
+#' sampled occurrences and a `coordinateUncertaintyInMeters` column containing
+#' the coordinate uncertainty for each observation.
 #'
 #' @importFrom dplyr select
 #' @importFrom rlang .data

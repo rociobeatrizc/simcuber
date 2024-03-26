@@ -15,25 +15,50 @@ grid_designation(
 )
 }
 \arguments{
-\item{observations}{An sf object with POINT geometry and a \code{coordinateUncertaintyInMeters} column. If this column is not present, the function will assume no (zero meters) uncertainty around the observation points.}
+\item{observations}{An sf object with POINT geometry and a \code{coordinateUncertaintyInMeters} column. If this column is not present, the
+function will assume no (zero meters) uncertainty around the observation points.}
 
-\item{grid}{An sf object with POLYGON geometry (usually a grid) to which observations should be designated.}
+\item{grid}{An sf object with POLYGON geometry (usually a grid) to which
+observations should be designated.}
 
-\item{id_col}{The column name of the column with unique ids for each grid cell. If \code{"row_names"} (the default), a new column \code{id} is created were the row names represent the unique ids.}
+\item{id_col}{The column name of the column with unique ids for each grid
+cell. If \code{"row_names"} (the default), a new column \code{id} is created were the
+row names represent the unique ids.}
 
-\item{seed}{The seed for random number generation to make results reproducible. If \code{NA} (the default), no seed is used.}
+\item{seed}{The seed for random number generation to make results
+reproducible. If \code{NA} (the default), no seed is used.}
 
-\item{aggregate}{Logical. If \code{TRUE} (default), return data cube in aggregated form (grid with number of observations per grid cell). Otherwise return sampled points in uncertainty circle.}
+\item{aggregate}{Logical. If \code{TRUE} (default), return data cube in
+aggregated form (grid with number of observations per grid cell). Otherwise
+return sampled points in uncertainty circle.}
 
-\item{randomisation}{\code{"uniform"} or \code{"normal"}. Randomisation method used for sampling within uncertainty circle around each observation. By default \code{"uniform"} which means each point uncertainty circle has an equal probability to be selected. The other option is \code{"normal"} where a point is sampled from a bivariate Normal distribution with means equal to the observation point and the variance equal to (-\code{coordinateUncertaintyInMeters}^2) / (2 * log(1 - \code{p_norm})) such that \code{p_norm} \% of all possible samples from this Normal distribution fall within the uncertainty circle.}
+\item{randomisation}{\code{"uniform"} or \code{"normal"}. Randomisation method used
+for sampling within uncertainty circle around each observation. By default
+\code{"uniform"} which means each point uncertainty circle has an equal
+probability to be selected. The other option is \code{"normal"} where a point is
+sampled from a bivariate Normal distribution with means equal to the
+observation point and the variance equal to
+(-\code{coordinateUncertaintyInMeters}^2) / (2 * log(1 - \code{p_norm})) such that
+\code{p_norm} \% of all possible samples from this Normal distribution fall
+within the uncertainty circle.}
 
-\item{p_norm}{A numeric value between 0 and 1. Only used if \code{randomisation = "normal"}. The proportion of all possible samples from a a bivariate Normal distribution that fall within the uncertainty circle. If normal randomisation is used and no value is given, the default \code{p_norm} value is 0.95.}
+\item{p_norm}{A numeric value between 0 and 1. Only used if
+\code{randomisation = "normal"}. The proportion of all possible samples from a a
+bivariate Normal distribution that fall within the uncertainty circle. If
+normal randomisation is used and no value is given, the default \code{p_norm}
+value is 0.95.}
 }
 \value{
-In case of \code{aggregate = TRUE}, an sf object with POLYGON geometry containing the locations of the grid cells, an \code{n} column with the number of observations per grid cell, and a \code{min_coord_uncertainty} column containing the minimal coordinate uncertainty per grid cell. In case of \code{aggregate = FALSE}, an sf object with POINT geometry containing the locations of the sampled observations within the uncertainty circle, and a \code{coordinateUncertaintyInMeters} column containing the coordinate uncertainty for each observation.
+In case of \code{aggregate = TRUE}, an sf object with POLYGON geometry
+containing the locations of the grid cells, an \code{n} column with the number of observations per grid cell, and a \code{min_coord_uncertainty} column containing the
+minimal coordinate uncertainty per grid cell. In case of
+\code{aggregate = FALSE}, an sf object with POINT geometry containing the
+locations of the sampled observations within the uncertainty circle, and a \code{coordinateUncertaintyInMeters} column containing the coordinate uncertainty
+for each observation.
 }
 \description{
-The function designates observations to cells of a given grid to create an aggregated data cube.
+The function designates observations to cells of a given grid to create an
+aggregated data cube.
 }
 \examples{
 
@@ -52,7 +77,7 @@ observations_sf <- data.frame(
   lat = runif(n_points, ylim[1], ylim[2]),
   long = runif(n_points, xlim[1], xlim[2]),
   coordinateUncertaintyInMeters = coordinate_uncertainty
-  ) \%>\%
+) \%>\%
   st_as_sf(coords = c("long", "lat"), crs = 3035)
 
 # Add buffer uncertainty in meters around points
@@ -64,12 +89,13 @@ grid_df <- st_make_grid(
   observations_buffered,
   square = TRUE,
   cellsize = c(200, 200)
-  ) \%>\%
+) \%>\%
   st_sf()
 
 # Create occurrence cube
 grid_designation(
   observations = observations_sf,
   grid = grid_df,
-  seed = 123)
+  seed = 123
+)
 }
