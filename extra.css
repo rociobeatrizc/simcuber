@@ -10,10 +10,10 @@ body {
 }
 
 a {
-  color: #c04384;
+  color: #48A529;
 }
 a:hover {
-  color: #337ab7;
+  color: #6CDDB4;
 }
 
 .navbar,
@@ -51,7 +51,7 @@ a:hover {
 }
 
 code.sourceCode.diff span.st {
-  background-color: #C04384;
+  background-color: #48A529;
   color: #FFFFFF;
   font-weight: bold;
 }
@@ -63,30 +63,30 @@ code.sourceCode.diff span.va {
 
 /*selection color*/
 ::selection {
-  background: #c04384;
+  background: #48A529;
   color: #fff;
 }
 ::-moz-selection {
-  background: #c04384;
+  background: #48A529;
   color: #fff;
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
-  color: #337ab7;
+  color: #6CDDB4;
   background: #fff;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-  color: #337ab7;
+  color: #6CDDB4;
   background: #fff;
 }
 
 .navbar-default .navbar-nav>li>a:hover{
-  color: #337ab7;
+  color: #6CDDB4;
   background: #fff;
 }
 
 .dropdown-menu>li>a:hover{
   color: #fff;
-  background: #337ab7;
+  background: #6CDDB4;
 }
