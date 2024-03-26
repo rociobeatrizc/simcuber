@@ -13,8 +13,14 @@ navbar:
   right:
   - icon: "fa fa-github"
     href: https://github.com/b-cubed-eu/simcuber
-  - icon: "fa fa-twitter"
+  - icon: "fa fa-globe-pointer"
+    href: https://b-cubed.eu/
+  - icon: "fa fa-x-twitter"
     href: https://twitter.com/BCubedProject
+  - icon: "fa fa-linkedin"
+    href: https://www.linkedin.com/company/b-cubed-project
+  - icon: "fa fa-youtube"
+    href: https://www.youtube.com/@B-CubedProject
 
 authors:
   Research Institute for Nature and Forest (INBO):
