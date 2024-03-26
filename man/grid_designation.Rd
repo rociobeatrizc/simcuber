@@ -15,8 +15,10 @@ grid_designation(
 )
 }
 \arguments{
-\item{observations}{An sf object with POINT geometry and a \code{coordinateUncertaintyInMeters} column. If this column is not present, the
-function will assume no (zero meters) uncertainty around the observation points.}
+\item{observations}{An sf object with POINT geometry and a
+\code{coordinateUncertaintyInMeters} column. If this column is not present, the
+function will assume no (zero meters) uncertainty around the observation
+points.}
 
 \item{grid}{An sf object with POLYGON geometry (usually a grid) to which
 observations should be designated.}
@@ -50,10 +52,12 @@ value is 0.95.}
 }
 \value{
 In case of \code{aggregate = TRUE}, an sf object with POLYGON geometry
-containing the locations of the grid cells, an \code{n} column with the number of observations per grid cell, and a \code{min_coord_uncertainty} column containing the
-minimal coordinate uncertainty per grid cell. In case of
+containing the locations of the grid cells, an \code{n} column with the number of
+observations per grid cell, and a \code{min_coord_uncertainty} column containing
+the minimal coordinate uncertainty per grid cell. In case of
 \code{aggregate = FALSE}, an sf object with POINT geometry containing the
-locations of the sampled observations within the uncertainty circle, and a \code{coordinateUncertaintyInMeters} column containing the coordinate uncertainty
+locations of the sampled observations within the uncertainty circle, and a
+\code{coordinateUncertaintyInMeters} column containing the coordinate uncertainty
 for each observation.
 }
 \description{
