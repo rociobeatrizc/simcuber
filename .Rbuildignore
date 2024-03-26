@@ -13,3 +13,4 @@
 ^docs$
 ^man-roxygen$
 ^pkgdown$
+^LICENSE\.md$
