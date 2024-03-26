@@ -4,8 +4,6 @@ allowed:
   warnings: []
   notes: []
 required:
-- CITATION
-- DESCRIPTION
 - R CMD check
 - checklist
 - codemeta
