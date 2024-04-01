@@ -46,7 +46,7 @@ remotes::install_github("b-cubed-eu/simcuber")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-#library(simcuber)
+library(simcuber)
 ```
 
 ...
