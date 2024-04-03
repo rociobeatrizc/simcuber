@@ -1,6 +1,3 @@
-# Source functions
-source(here("R", "grid_designation.R"))
-
 # Prepare example datasets
 ## number of points and extend
 n_points <- 4
