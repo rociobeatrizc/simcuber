@@ -287,11 +287,11 @@ sf::st_agr(observations_sf2_buffered) <- "constant"
 sf::st_agr(grid_df2) <- "constant"
 # No uncertainty
 potential_gridcells_sf1 <- st_intersection(grid_df2, observations_sf1) %>%
-  pull(id)
+  dplyr::pull(id)
 # With uncertainty
 potential_gridcells_sf2 <- st_intersection(grid_df2,
                                            observations_sf2_buffered) %>%
-  pull(id)
+  dplyr::pull(id)
 
 test_that("check possible outcomes for grid cell designation", {
   # aggregate = TRUE, randomisation = "uniform"
@@ -300,13 +300,13 @@ test_that("check possible outcomes for grid cell designation", {
                     grid_designation(observations_sf1, grid = grid_df2,
                                      id_col = "id") %>%
                       filter(n > 0) %>%
-                      pull(id))
+                      dplyr::pull(id))
   })
   expect_contains(potential_gridcells_sf2,
                   grid_designation(observations_sf2, grid = grid_df2,
                                    id_col = "id") %>%
                     filter(n > 0) %>%
-                    pull(id))
+                    dplyr::pull(id))
   # aggregate = TRUE, randomisation = "normal"
   suppressWarnings({
     expect_contains(potential_gridcells_sf1,
@@ -314,14 +314,14 @@ test_that("check possible outcomes for grid cell designation", {
                                      id_col = "id",
                                      randomisation = "normal") %>%
                       filter(n > 0) %>%
-                      pull(id))
+                      dplyr::pull(id))
   })
   expect_contains(potential_gridcells_sf2,
                   grid_designation(observations_sf2, grid = grid_df2,
                                    id_col = "id",
                                    randomisation = "normal") %>%
                     filter(n > 0) %>%
-                    pull(id))
+                    dplyr::pull(id))
 
   # aggregate = FALSE, randomisation = "uniform"
   suppressWarnings({
@@ -335,7 +335,7 @@ test_that("check possible outcomes for grid cell designation", {
                   grid_designation(observations_sf2, grid = grid_df2,
                                    id_col = "id",
                                    aggregate = FALSE) %>%
-                    pull(id))
+                    dplyr::pull(id))
   # aggregate = FALSE, randomisation = "normal"
   suppressWarnings({
     expect_contains(potential_gridcells_sf1,
@@ -343,39 +343,39 @@ test_that("check possible outcomes for grid cell designation", {
                                      id_col = "id",
                                      randomisation = "normal",
                                      aggregate = FALSE) %>%
-                      pull(id))
+                      dplyr::pull(id))
   })
   expect_contains(potential_gridcells_sf2,
                   grid_designation(observations_sf2, grid = grid_df2,
                                    id_col = "id",
                                    randomisation = "normal",
                                    aggregate = FALSE) %>%
-                    pull(id))
+                    dplyr::pull(id))
 })
 
 test_that("number of observations should equal numbers in grid", {
   # randomisation = "uniform"
   suppressWarnings({
     expect_equal(grid_designation(observations_sf1, grid = grid_df1) %>%
-                   pull(n) %>%
+                   dplyr::pull(n) %>%
                    sum(),
                  nrow(observations_sf1))
   })
   expect_equal(grid_designation(observations_sf2, grid = grid_df1) %>%
-                 pull(n) %>%
+                 dplyr::pull(n) %>%
                  sum(),
                nrow(observations_sf2))
   # randomisation = "normal"
   suppressWarnings({
     expect_equal(grid_designation(observations_sf1, grid = grid_df1,
                                   randomisation = "normal") %>%
-                   pull(n) %>%
+                   dplyr::pull(n) %>%
                    sum(),
                  nrow(observations_sf1))
   })
   expect_equal(grid_designation(observations_sf2, grid = grid_df1,
                                 randomisation = "normal") %>%
-                 pull(n) %>%
+                 dplyr::pull(n) %>%
                  sum(),
                nrow(observations_sf2))
 })
