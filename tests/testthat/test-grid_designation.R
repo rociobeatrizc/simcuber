@@ -299,13 +299,13 @@ test_that("check possible outcomes for grid cell designation", {
     expect_contains(potential_gridcells_sf1,
                     grid_designation(observations_sf1, grid = grid_df2,
                                      id_col = "id") %>%
-                      filter(n > 0) %>%
+                      dplyr::filter(n > 0) %>%
                       dplyr::pull(id))
   })
   expect_contains(potential_gridcells_sf2,
                   grid_designation(observations_sf2, grid = grid_df2,
                                    id_col = "id") %>%
-                    filter(n > 0) %>%
+                    dplyr::filter(n > 0) %>%
                     dplyr::pull(id))
   # aggregate = TRUE, randomisation = "normal"
   suppressWarnings({
@@ -313,14 +313,14 @@ test_that("check possible outcomes for grid cell designation", {
                     grid_designation(observations_sf1, grid = grid_df2,
                                      id_col = "id",
                                      randomisation = "normal") %>%
-                      filter(n > 0) %>%
+                      dplyr::filter(n > 0) %>%
                       dplyr::pull(id))
   })
   expect_contains(potential_gridcells_sf2,
                   grid_designation(observations_sf2, grid = grid_df2,
                                    id_col = "id",
                                    randomisation = "normal") %>%
-                    filter(n > 0) %>%
+                    dplyr::filter(n > 0) %>%
                     dplyr::pull(id))
 
   # aggregate = FALSE, randomisation = "uniform"
@@ -329,7 +329,7 @@ test_that("check possible outcomes for grid cell designation", {
                     grid_designation(observations_sf1, grid = grid_df2,
                                      id_col = "id",
                                      aggregate = FALSE) %>%
-                      pull(id))
+                      dplyr::pull(id))
   })
   expect_contains(potential_gridcells_sf2,
                   grid_designation(observations_sf2, grid = grid_df2,
