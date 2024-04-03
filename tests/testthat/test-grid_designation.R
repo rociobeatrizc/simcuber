@@ -1,9 +1,3 @@
-# Load packages
-library(testthat)
-library(here)
-library(sf)
-library(dplyr)
-
 # Source functions
 source(here("R", "grid_designation.R"))
 

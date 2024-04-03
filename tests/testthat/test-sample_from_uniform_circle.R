@@ -1,9 +1,3 @@
-# Load packages
-library(testthat)
-library(here)
-library(sf)
-library(dplyr)
-
 # Source functions
 source(here("R", "sample_from_uniform_circle.R"))
 
