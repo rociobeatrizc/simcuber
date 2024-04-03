@@ -26,15 +26,15 @@ observations_sf3 <- observations_sf2 %>%
 
 # Add buffer uncertainty in meters around points
 observations_sf2_buffered <- observations_sf2 %>%
-  st_buffer(observations_sf2$coordinateUncertaintyInMeters)
+  sf::st_buffer(observations_sf2$coordinateUncertaintyInMeters)
 
 # Create grid
-grid_df1 <- st_make_grid(
+grid_df1 <- sf::st_make_grid(
   observations_sf2_buffered,
   square = TRUE,
   cellsize = c(200, 200)
   ) %>%
-  st_sf()
+  sf::st_sf()
 
 grid_df2 <- grid_df1 %>%
   mutate(id = seq_len(nrow(grid_df1)))
@@ -104,7 +104,7 @@ test_that("arguments are of the right length", {
 test_that("crs of observations and grid must match", {
   expect_error(
     grid_designation(observations_sf2,
-                     grid = st_transform(grid_df1, crs = 4326)),
+                     grid = sf::st_transform(grid_df1, crs = 4326)),
     regexp = "sf::st_crs(observations) == sf::st_crs(grid) is not TRUE",
     fixed = TRUE)
 })
