@@ -1,10 +1,5 @@
-# library(testthat)
-# library(here)
-# library(sf)
-# library(dplyr)
-#
-# # Source functions
-# source(here("R", "sample_from_binormal_circle.R"))
+# Source functions
+source(here("R", "sample_from_binormal_circle.R"))
 
 # Prepare example datasets
 ## number of points and extend
